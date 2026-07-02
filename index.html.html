@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thanushree MK — Full-Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b0a08;
+    --bg-raised: #16130f;
+    --bg-panel: #1c1812;
+    --hairline: #35301f;
+    --text: #eae4d5;
+    --text-dim: #9c9382;
+    --amber: #ffb000;
+    --amber-dim: #b47c1f;
+    --teal: #5fd6c4;
+    --red: #ff6b5e;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--amber);color:#0b0a08;}
+
+  /* subtle CRT scanline + vignette, very low opacity */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:repeating-linear-gradient(
+      to bottom, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px,
+      transparent 1px, transparent 3px
+    );
+    pointer-events:none;
+    z-index:9999;
+  }
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
+    pointer-events:none;
+    z-index:9998;
+  }
+
+  a{color:var(--teal);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(11,10,8,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--hairline);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px;}
+  .brand{font-family:var(--mono); font-weight:700; color:var(--amber); font-size:15px; letter-spacing:0.5px;}
+  .brand span{color:var(--text-dim);}
+  .navlinks{display:flex; gap:22px; font-family:var(--mono); font-size:13px;}
+  .navlinks a{color:var(--text-dim);}
+  .navlinks a:hover{color:var(--amber); text-decoration:none;}
+
+  /* ---------- HERO / TERMINAL ---------- */
+  .hero{padding:64px 0 40px;}
+  .terminal{
+    background:var(--bg-panel);
+    border:1px solid var(--hairline);
+    border-radius:8px;
+    box-shadow:0 0 0 1px rgba(0,0,0,0.4), 0 20px 60px -20px rgba(255,176,0,0.08);
+    overflow:hidden;
+  }
+  .term-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:10px 14px;
+    background:var(--bg-raised);
+    border-bottom:1px solid var(--hairline);
+  }
+  .dot{width:10px; height:10px; border-radius:50%;}
+  .dot.r{background:#ff5f56;}
+  .dot.y{background:#ffbd2e;}
+  .dot.g{background:#27c93f;}
+  .term-title{
+    margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--text-dim);
+  }
+  .term-body{
+    padding:22px 24px 26px;
+    font-family:var(--mono);
+    font-size:14px;
+    min-height:260px;
+  }
+  .term-line{color:var(--text-dim); margin-bottom:4px;}
+  .prompt{color:var(--teal);}
+  .path{color:var(--amber-dim);}
+  .out-name{color:var(--amber); font-size:28px; font-weight:800; letter-spacing:0.5px; display:block; margin:14px 0 6px;}
+  .out-role{color:var(--text); font-size:15px; display:block; margin-bottom:14px;}
+  .out-line{color:var(--text-dim); display:block; margin-bottom:4px; font-size:13.5px;}
+  .cursor{display:inline-block; width:8px; height:15px; background:var(--amber); vertical-align:middle; animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  .term-input-row{
+    display:flex; align-items:center; gap:8px; margin-top:16px;
+    border-top:1px dashed var(--hairline); padding-top:14px;
+  }
+  .term-input-row .prompt{white-space:nowrap;}
+  #termInput{
+    flex:1; background:transparent; border:none; outline:none;
+    color:var(--text); font-family:var(--mono); font-size:14px;
+  }
+  .term-hint{color:var(--text-dim); font-size:11.5px; margin-top:10px; font-family:var(--mono);}
+  .term-hint b{color:var(--amber-dim);}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:56px 0;}
+  section + section{border-top:1px solid var(--hairline);}
+  .eyebrow{
+    font-family:var(--mono); color:var(--amber-dim); font-size:12px;
+    letter-spacing:2px; text-transform:uppercase; margin-bottom:8px;
+  }
+  h2{font-family:var(--mono); font-size:22px; color:var(--text); margin-bottom:22px; font-weight:700;}
+  h2::before{content:"# "; color:var(--amber-dim);}
+
+  .lead{color:var(--text-dim); max-width:640px; margin-bottom:8px;}
+
+  /* experience */
+  .job{
+    border-left:2px solid var(--hairline);
+    padding:2px 0 22px 20px;
+    position:relative;
+    margin-bottom:6px;
+  }
+  .job::before{
+    content:""; position:absolute; left:-6px; top:6px;
+    width:10px; height:10px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--amber-dim);
+  }
+  .job:last-child{padding-bottom:0;}
+  .job-row{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px;}
+  .job-role{font-weight:600; color:var(--text); font-size:15.5px;}
+  .job-org{color:var(--teal); font-size:14px;}
+  .job-date{font-family:var(--mono); font-size:12px; color:var(--text-dim);}
+  .job ul{margin:8px 0 0 18px; color:var(--text-dim); font-size:14px;}
+  .job li{margin-bottom:5px;}
+
+  /* projects */
+  .projects-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media(max-width:720px){.projects-grid{grid-template-columns:1fr;}}
+  .card{
+    background:var(--bg-panel); border:1px solid var(--hairline); border-radius:8px;
+    padding:20px; transition:border-color .18s, transform .18s;
+  }
+  .card:hover{border-color:var(--amber-dim); transform:translateY(-2px);}
+  .card-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;}
+  .card h3{font-family:var(--mono); font-size:15px; color:var(--amber); font-weight:700;}
+  .card .date{font-family:var(--mono); font-size:11px; color:var(--text-dim);}
+  .stack{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 12px;}
+  .tag{
+    font-family:var(--mono); font-size:11px; color:var(--teal);
+    background:rgba(95,214,196,0.08); border:1px solid rgba(95,214,196,0.25);
+    padding:2px 8px; border-radius:4px;
+  }
+  .card p{color:var(--text-dim); font-size:13.5px;}
+
+  /* skills */
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media(max-width:720px){.skills-grid{grid-template-columns:1fr 1fr;}}
+  .skill-cat{background:var(--bg-panel); border:1px solid var(--hairline); border-radius:8px; padding:16px;}
+  .skill-cat .label{font-family:var(--mono); color:var(--amber-dim); font-size:11.5px; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;}
+  .skill-cat .val{color:var(--text); font-size:13.5px;}
+
+  /* education */
+  .edu-box{background:var(--bg-panel); border:1px solid var(--hairline); border-radius:8px; padding:20px;}
+  .edu-box .job-role{margin-bottom:2px;}
+
+  /* contact */
+  .contact-grid{display:flex; gap:14px; flex-wrap:wrap;}
+  .contact-item{
+    font-family:var(--mono); font-size:13.5px;
+    background:var(--bg-panel); border:1px solid var(--hairline);
+    padding:12px 16px; border-radius:8px; color:var(--text-dim);
+    display:flex; align-items:center; gap:8px;
+  }
+  .contact-item b{color:var(--amber-dim); font-weight:600;}
+
+  footer{padding:28px 0 50px; text-align:center; color:var(--text-dim); font-family:var(--mono); font-size:12px;}
+  footer .amber{color:var(--amber-dim);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">thanushree<span>@portfolio</span> ~ %</div>
+    <div class="navlinks">
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#skills">skills</a>
+      <a href="#education">education</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap hero">
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+      <div class="term-title">thanushree@portfolio — zsh — 80×24</div>
+    </div>
+    <div class="term-body" id="termBody">
+      <div class="term-line"><span class="prompt">➜</span> <span class="path">~</span> whoami</div>
+      <span class="out-name">Thanushree MK</span>
+      <span class="out-role">Full-Stack Developer · Electronics &amp; Communications Engineer</span>
+      <span class="out-line">Final-year ECE student · Software Developer Intern @ Bosch</span>
+      <span class="out-line">Based in Bangalore, Karnataka</span>
+
+      <div class="term-input-row">
+        <span class="prompt">➜</span> <span class="path">~</span>
+        <input type="text" id="termInput" placeholder="type a command..." autocomplete="off" spellcheck="false">
+      </div>
+      <div class="term-hint">try <b>help</b>, <b>projects</b>, <b>skills</b>, <b>contact</b>, or <b>clear</b></div>
+    </div>
+  </div>
+</div>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow">02 · work log</div>
+    <h2>experience</h2>
+
+    <div class="job">
+      <div class="job-row">
+        <span class="job-role">Software Developer Intern — Full Stack</span>
+        <span class="job-date">Jan 2026 – Present</span>
+      </div>
+      <div class="job-org">Bosch</div>
+      <ul>
+        <li>Developing full-stack features within Bosch's engineering software ecosystem, collaborating with cross-functional teams in an agile environment.</li>
+        <li>Applying best practices in software design and code quality across front-end and back-end layers, gaining exposure to enterprise-scale development workflows.</li>
+        <li>Actively participating in code reviews, sprint planning, and technical discussions, building proficiency in industry-standard tools and methodologies.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-row">
+        <span class="job-role">Engineering Intern</span>
+        <span class="job-date">Oct 2023 – Nov 2023</span>
+      </div>
+      <div class="job-org">SGS Tekniks Manufacturing Pvt Ltd</div>
+      <ul>
+        <li>Engaged in structured knowledge-sharing sessions with senior engineers, deepening understanding of manufacturing industry standards and embedded system applications.</li>
+        <li>Collaborated with cross-functional teams to identify production workflow bottlenecks; contributed to data-driven analysis that supported process improvements.</li>
+        <li>Gained practical exposure to hardware-software integration and quality assurance practices in a production environment.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">03 · build log</div>
+    <h2>projects</h2>
+    <div class="projects-grid">
+
+      <div class="card">
+        <div class="card-top"><h3>TrustVote</h3><span class="date">Sep – Dec 2025</span></div>
+        <p>End-to-end encrypted e-voting platform targeting a 40% reduction in average voting time, with cryptographic protocols for vote integrity, anonymity, and tamper-resistance.</p>
+        <div class="stack"><span class="tag">Python</span><span class="tag">Encryption</span><span class="tag">Web</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Railway Safety Detection System</h3><span class="date">Jan 2024 – Apr 2025</span></div>
+        <p>Real-time train detection and collision alert system over a wireless sensor network, hitting 99% detection accuracy with noise-filtering that cut false positives by 35%.</p>
+        <div class="stack"><span class="tag">Arduino</span><span class="tag">C++</span><span class="tag">RF Wireless</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Piezo Smart Security Mat</h3><span class="date">Aug – Nov 2024</span></div>
+        <p>Pressure-sensitive smart mat on ESP32 with a Python signal-processing pipeline for real-time monitoring, reaching 95% signal accuracy at low latency.</p>
+        <div class="stack"><span class="tag">Python</span><span class="tag">ESP32</span><span class="tag">Embedded</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Your next build</h3><span class="date">—</span></div>
+        <p>Slot for a GitHub-linked project once it's ready — drop the repo URL in and this card becomes a live link.</p>
+        <div class="stack"><span class="tag">TODO</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">04 · toolbox</div>
+    <h2>skills</h2>
+    <div class="skills-grid">
+      <div class="skill-cat"><div class="label">Languages</div><div class="val">Python · Java · C++ · MySQL · Verilog</div></div>
+      <div class="skill-cat"><div class="label">Hardware</div><div class="val">Arduino · ESP32 · ARM Cortex · 8051 MCU</div></div>
+      <div class="skill-cat"><div class="label">Domains</div><div class="val">Embedded Systems · IoT · VLSI · Full-Stack Dev</div></div>
+      <div class="skill-cat"><div class="label">Tools</div><div class="val">Arduino IDE · VS Code · Eclipse · AutoCAD</div></div>
+      <div class="skill-cat"><div class="label">Mobile</div><div class="val">Android dev fundamentals</div></div>
+      <div class="skill-cat"><div class="label">Practice</div><div class="val">Cross-functional teamwork · Docs · Problem-solving</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="eyebrow">05 · record</div>
+    <h2>education</h2>
+    <div class="edu-box">
+      <div class="job-row">
+        <span class="job-role">B.E. — Electronics &amp; Communication</span>
+        <span class="job-date">May 2022 – Present</span>
+      </div>
+      <div class="job-org" style="margin-bottom:10px;">K S Institute of Technology, Bangalore</div>
+      <p style="color:var(--text-dim); font-size:13.5px;">Final year. Coursework: Embedded Systems, Digital Signal Processing, VLSI Design, Microcontrollers &amp; Applications, Computer Networks, Data Structures.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">06 · reach me</div>
+    <h2>contact</h2>
+    <div class="contact-grid">
+      <div class="contact-item"><b>mail</b> thanu272shree@gmail.com</div>
+      <div class="contact-item"><b>tel</b> +91 9110863194</div>
+      <div class="contact-item"><b>in</b> linkedin.com/in/thanushree-mk-44243736a</div>
+      <div class="contact-item"><b>loc</b> Bangalore, Karnataka</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="amber">$</span> echo "built by Thanushree MK" — thanks for scrolling.
+  </div>
+</footer>
+
+<script>
+  const input = document.getElementById('termInput');
+  const body = document.getElementById('termBody');
+  const inputRow = input.parentElement;
+
+  const commands = {
+    help: "available: help, about, projects, skills, contact, education, clear",
+    about: "→ scrolling to nothing yet — check experience section below.",
+    projects: "→ jumping to #projects",
+    skills: "→ jumping to #skills",
+    contact: "→ jumping to #contact",
+    education: "→ jumping to #education",
+  };
+
+  function printLine(text, cls){
+    const div = document.createElement('div');
+    div.className = cls || 'term-line';
+    div.textContent = text;
+    body.insertBefore(div, inputRow);
+  }
+
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      const raw = input.value.trim();
+      const cmd = raw.toLowerCase();
+      printLine('➜ ~ ' + raw);
+      input.value = '';
+
+      if(cmd === 'clear'){
+        document.querySelectorAll('#termBody .term-line').forEach(el => el.remove());
+        return;
+      }
+      if(['projects','skills','contact','education'].includes(cmd)){
+        printLine(commands[cmd], 'out-line');
+        const target = document.getElementById(cmd);
+        if(target) setTimeout(() => target.scrollIntoView({behavior:'smooth', block:'start'}), 150);
+        return;
+      }
+      if(cmd === 'help'){
+        printLine(commands.help, 'out-line');
+        return;
+      }
+      if(cmd === 'about'){
+        printLine("Final-year ECE student, full-stack + embedded background. See sections below.", 'out-line');
+        return;
+      }
+      if(cmd === ''){ return; }
+      printLine(`command not found: ${raw} — try "help"`, 'out-line');
+    }
+  });
+</script>
+
+</body>
+</html>
