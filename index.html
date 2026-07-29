@@ -66,7 +66,7 @@
   nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px;}
   .brand{font-family:var(--mono); font-weight:700; color:var(--amber); font-size:15px; letter-spacing:0.5px;}
   .brand span{color:var(--text-dim);}
-  .navlinks{display:flex; gap:22px; font-family:var(--mono); font-size:13px;}
+  .navlinks{display:flex; gap:18px; font-family:var(--mono); font-size:13px; flex-wrap:wrap;}
   .navlinks a{color:var(--text-dim);}
   .navlinks a:hover{color:var(--amber); text-decoration:none;}
 
@@ -184,6 +184,16 @@
   .edu-box{background:var(--bg-panel); border:1px solid var(--hairline); border-radius:8px; padding:20px;}
   .edu-box .job-role{margin-bottom:2px;}
 
+  /* certifications */
+  .cert-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;}
+  @media(max-width:720px){.cert-grid{grid-template-columns:1fr;}}
+  .cert-card{
+    background:var(--bg-panel); border:1px solid var(--hairline); border-radius:8px;
+    padding:16px;
+  }
+  .cert-card .cert-name{color:var(--text); font-size:13.5px; font-weight:600; margin-bottom:4px;}
+  .cert-card .cert-org{font-family:var(--mono); font-size:12px; color:var(--text-dim);}
+
   /* contact */
   .contact-grid{display:flex; gap:14px; flex-wrap:wrap;}
   .contact-item{
@@ -208,6 +218,7 @@
       <a href="#projects">projects</a>
       <a href="#skills">skills</a>
       <a href="#education">education</a>
+      <a href="#certifications">certs</a>
       <a href="#contact">contact</a>
     </div>
   </div>
@@ -222,8 +233,8 @@
     <div class="term-body" id="termBody">
       <div class="term-line"><span class="prompt">➜</span> <span class="path">~</span> whoami</div>
       <span class="out-name">Thanushree MK</span>
-      <span class="out-role">Full-Stack Developer · Electronics &amp; Communications Engineer</span>
-      <span class="out-line">Electronics &amp; Communications Engineering graduate · Software Developer Intern @ Bosch</span>
+      <span class="out-role">Electronics &amp; Communications Engineer · Embedded Systems &amp; Full-Stack Developer</span>
+      <span class="out-line">ECE graduate · Software Developer Intern @ Bosch (Java full-stack, embedded systems, IoT)</span>
       <span class="out-line">Based in Bangalore, Karnataka</span>
 
       <div class="term-input-row">
@@ -247,9 +258,12 @@
       </div>
       <div class="job-org">Bosch</div>
       <ul>
-        <li>Designed and developed the SAP Re-Release Workflow Management System, a multi-stage, role-based approval application used within Bosch's Technical Functions Department.</li>
-        <li>Built the Slot Allocation Management System for SMT/FA production planning, and shipped enhancements to the Electronic Change Request (ECR) platform.</li>
-        <li>Collaborated with cross-functional engineering teams, participated in code reviews and sprint planning, and applied best practices in software design and code quality.</li>
+        <li>Designed and developed the SAP Re-Release Workflow Management System, a multi-stage, role-based approval application automating SAP re-release approvals end-to-end.</li>
+        <li>Built the Slot Allocation Management System for SMT/FA production planning — meeting scheduling, ECR tracking, production line allocation, and execution-status reporting.</li>
+        <li>Enhanced the Electronic Change Request (ECR) platform with new approval screens, report generation, validations, and workflow logic, and resolved production bugs.</li>
+        <li>Developed interactive reporting dashboards (JSP, JavaScript, DataTables) for real-time tracking of approval status and execution timelines.</li>
+        <li>Designed and optimized MySQL schemas, queries, and transaction handling supporting workflow data, CRUD operations, and audit trails.</li>
+        <li>Collaborated with cross-functional engineering teams, participated in code reviews and sprint planning, and applied best practices in software design, MVC architecture, and code quality.</li>
       </ul>
     </div>
 
@@ -327,12 +341,13 @@
     <div class="eyebrow">04 · toolbox</div>
     <h2>skills</h2>
     <div class="skills-grid">
-      <div class="skill-cat"><div class="label">Languages</div><div class="val">Java · Python · C++ · MySQL · Verilog</div></div>
-      <div class="skill-cat"><div class="label">Web / Full-Stack</div><div class="val">JSP · Servlets · JDBC · HTML5 · CSS3 · JavaScript · Bootstrap · jQuery · MVC</div></div>
-      <div class="skill-cat"><div class="label">Hardware</div><div class="val">Arduino · ESP32 · ARM Cortex · 8051 MCU</div></div>
-      <div class="skill-cat"><div class="label">Domains</div><div class="val">Embedded Systems · IoT · VLSI · Workflow Automation · RBAC</div></div>
-      <div class="skill-cat"><div class="label">Tools</div><div class="val">Arduino IDE · VS Code · Eclipse · AutoCAD</div></div>
-      <div class="skill-cat"><div class="label">Practice</div><div class="val">Cross-functional teamwork · Docs · Report generation · Problem-solving</div></div>
+      <div class="skill-cat"><div class="label">Programming Languages</div><div class="val">Java · Python · C++ · JavaScript · SQL · Verilog</div></div>
+      <div class="skill-cat"><div class="label">Full-Stack Web Dev</div><div class="val">JSP · Servlets · JDBC · MVC · HTML5 · CSS3 · Bootstrap · jQuery · DataTables</div></div>
+      <div class="skill-cat"><div class="label">Databases</div><div class="val">MySQL · Schema Design · Query Optimization · Transaction Handling</div></div>
+      <div class="skill-cat"><div class="label">Frameworks &amp; Practices</div><div class="val">Workflow Automation · Role-Based Access Control (RBAC) · CRUD Applications · Enterprise Web Apps</div></div>
+      <div class="skill-cat"><div class="label">Embedded Systems &amp; IoT</div><div class="val">Arduino · ESP32 · ARM Cortex · 8051 MCU · Embedded C</div></div>
+      <div class="skill-cat"><div class="label">VLSI &amp; Hardware Design</div><div class="val">Verilog · Digital Logic Design</div></div>
+      <div class="skill-cat"><div class="label">Tools &amp; Platforms</div><div class="val">Eclipse · VS Code · Arduino IDE · Git · AutoCAD</div></div>
     </div>
   </div>
 </section>
@@ -344,22 +359,44 @@
     <div class="edu-box">
       <div class="job-row">
         <span class="job-role">B.E. — Electronics &amp; Communication</span>
-        <span class="job-date">May 2022 – May 2026</span>
+        <span class="job-date">May 2022 – Jun 2026</span>
       </div>
-      <div class="job-org" style="margin-bottom:10px;">K S Institute of Technology, Bangalore</div>
+      <div class="job-org" style="margin-bottom:10px;">K S Institute of Technology, Bangalore <span style="color:var(--text-dim); font-size:12.5px;">(currently pursuing final year)</span></div>
       <p style="color:var(--text-dim); font-size:13.5px;">Coursework: Embedded Systems, Digital Signal Processing, VLSI Design, Microcontrollers &amp; Applications, Computer Networks, Data Structures.</p>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="eyebrow">06 · credentials</div>
+    <h2>certifications &amp; training</h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-name">Technology Apprenticeship Program</div>
+        <div class="cert-org">Accenture UK via Forage</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">GenAI-Powered Data Analytics</div>
+        <div class="cert-org">Tata Consultancy Services via Forage</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">C++ Programming</div>
+        <div class="cert-org">Infosys Springboard</div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap">
-    <div class="eyebrow">06 · reach me</div>
+    <div class="eyebrow">07 · reach me</div>
     <h2>contact</h2>
     <div class="contact-grid">
       <div class="contact-item"><b>mail</b> thanu272shree@gmail.com</div>
       <div class="contact-item"><b>tel</b> +91 9110863194</div>
       <div class="contact-item"><b>in</b> linkedin.com/in/thanushree-mk-44243736a</div>
+      <div class="contact-item"><b>web</b> thanushree-alt.github.io/portfolio/</div>
       <div class="contact-item"><b>loc</b> Bangalore, Karnataka</div>
     </div>
   </div>
@@ -377,12 +414,13 @@
   const inputRow = input.parentElement;
 
   const commands = {
-    help: "available: help, about, projects, skills, contact, education, clear",
+    help: "available: help, about, projects, skills, contact, education, certifications, clear",
     about: "→ scrolling to nothing yet — check experience section below.",
     projects: "→ jumping to #projects",
     skills: "→ jumping to #skills",
     contact: "→ jumping to #contact",
     education: "→ jumping to #education",
+    certifications: "→ jumping to #certifications",
   };
 
   function printLine(text, cls){
@@ -403,7 +441,7 @@
         document.querySelectorAll('#termBody .term-line').forEach(el => el.remove());
         return;
       }
-      if(['projects','skills','contact','education'].includes(cmd)){
+      if(['projects','skills','contact','education','certifications'].includes(cmd)){
         printLine(commands[cmd], 'out-line');
         const target = document.getElementById(cmd);
         if(target) setTimeout(() => target.scrollIntoView({behavior:'smooth', block:'start'}), 150);
