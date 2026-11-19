@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thanushree MK — Full-Stack Developer</title>
+<title>Thanushree MK | Java Developer</title>
+<meta name="description" content="Thanushree MK - ECE graduate and Java developer with hands-on experience in enterprise web applications at Bosch.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -17,7 +18,6 @@
     --amber: #ffb000;
     --amber-dim: #b47c1f;
     --teal: #5fd6c4;
-    --red: #ff6b5e;
     --mono: 'JetBrains Mono', monospace;
     --sans: 'IBM Plex Sans', sans-serif;
   }
@@ -32,7 +32,6 @@
   }
   ::selection{background:var(--amber);color:#0b0a08;}
 
-  /* subtle CRT scanline + vignette, very low opacity */
   body::before{
     content:"";
     position:fixed; inset:0;
@@ -56,21 +55,21 @@
 
   .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
 
-  /* ---------- NAV ---------- */
+  /* NAV */
   nav{
     position:sticky; top:0; z-index:100;
     background:rgba(11,10,8,0.88);
     backdrop-filter:blur(6px);
     border-bottom:1px solid var(--hairline);
   }
-  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px;}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px; flex-wrap:wrap; gap:8px;}
   .brand{font-family:var(--mono); font-weight:700; color:var(--amber); font-size:15px; letter-spacing:0.5px;}
   .brand span{color:var(--text-dim);}
   .navlinks{display:flex; gap:18px; font-family:var(--mono); font-size:13px; flex-wrap:wrap;}
   .navlinks a{color:var(--text-dim);}
   .navlinks a:hover{color:var(--amber); text-decoration:none;}
 
-  /* ---------- HERO / TERMINAL ---------- */
+  /* HERO / TERMINAL */
   .hero{padding:64px 0 40px;}
   .terminal{
     background:var(--bg-panel);
@@ -89,24 +88,14 @@
   .dot.r{background:#ff5f56;}
   .dot.y{background:#ffbd2e;}
   .dot.g{background:#27c93f;}
-  .term-title{
-    margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--text-dim);
-  }
-  .term-body{
-    padding:22px 24px 26px;
-    font-family:var(--mono);
-    font-size:14px;
-    min-height:260px;
-  }
+  .term-title{margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--text-dim);}
+  .term-body{padding:22px 24px 26px; font-family:var(--mono); font-size:14px; min-height:260px;}
   .term-line{color:var(--text-dim); margin-bottom:4px;}
   .prompt{color:var(--teal);}
   .path{color:var(--amber-dim);}
   .out-name{color:var(--amber); font-size:28px; font-weight:800; letter-spacing:0.5px; display:block; margin:14px 0 6px;}
   .out-role{color:var(--text); font-size:15px; display:block; margin-bottom:14px;}
   .out-line{color:var(--text-dim); display:block; margin-bottom:4px; font-size:13.5px;}
-  .cursor{display:inline-block; width:8px; height:15px; background:var(--amber); vertical-align:middle; animation:blink 1s step-end infinite;}
-  @keyframes blink{50%{opacity:0;}}
-
   .term-input-row{
     display:flex; align-items:center; gap:8px; margin-top:16px;
     border-top:1px dashed var(--hairline); padding-top:14px;
@@ -119,7 +108,7 @@
   .term-hint{color:var(--text-dim); font-size:11.5px; margin-top:10px; font-family:var(--mono);}
   .term-hint b{color:var(--amber-dim);}
 
-  /* ---------- SECTIONS ---------- */
+  /* SECTIONS */
   section{padding:56px 0;}
   section + section{border-top:1px solid var(--hairline);}
   .eyebrow{
@@ -129,9 +118,7 @@
   h2{font-family:var(--mono); font-size:22px; color:var(--text); margin-bottom:22px; font-weight:700;}
   h2::before{content:"# "; color:var(--amber-dim);}
 
-  .lead{color:var(--text-dim); max-width:640px; margin-bottom:8px;}
-
-  /* experience */
+  /* EXPERIENCE */
   .job{
     border-left:2px solid var(--hairline);
     padding:2px 0 22px 20px;
@@ -151,7 +138,7 @@
   .job ul{margin:8px 0 0 18px; color:var(--text-dim); font-size:14px;}
   .job li{margin-bottom:5px;}
 
-  /* projects */
+  /* PROJECTS */
   .projects-lead{color:var(--text-dim); font-size:13.5px; max-width:640px; margin-bottom:20px;}
   .projects-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
   @media(max-width:720px){.projects-grid{grid-template-columns:1fr;}}
@@ -160,7 +147,7 @@
     padding:20px; transition:border-color .18s, transform .18s;
   }
   .card:hover{border-color:var(--amber-dim); transform:translateY(-2px);}
-  .card-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;}
+  .card-top{display:flex; justify-content:space-between; align-items:baseline; gap:8px; flex-wrap:wrap; margin-bottom:6px;}
   .card h3{font-family:var(--mono); font-size:15px; color:var(--amber); font-weight:700;}
   .card .date{font-family:var(--mono); font-size:11px; color:var(--text-dim);}
   .stack{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 12px;}
@@ -173,34 +160,32 @@
   .card ul{margin:8px 0 0 16px; color:var(--text-dim); font-size:13px;}
   .card li{margin-bottom:5px;}
 
-  /* skills */
+  /* SKILLS */
   .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
   @media(max-width:720px){.skills-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.skills-grid{grid-template-columns:1fr;}}
   .skill-cat{background:var(--bg-panel); border:1px solid var(--hairline); border-radius:8px; padding:16px;}
   .skill-cat .label{font-family:var(--mono); color:var(--amber-dim); font-size:11.5px; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;}
   .skill-cat .val{color:var(--text); font-size:13.5px;}
 
-  /* education */
+  /* EDUCATION */
   .edu-box{background:var(--bg-panel); border:1px solid var(--hairline); border-radius:8px; padding:20px;}
   .edu-box .job-role{margin-bottom:2px;}
 
-  /* certifications */
-  .cert-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;}
+  /* CERTIFICATIONS */
+  .cert-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
   @media(max-width:720px){.cert-grid{grid-template-columns:1fr;}}
-  .cert-card{
-    background:var(--bg-panel); border:1px solid var(--hairline); border-radius:8px;
-    padding:16px;
-  }
+  .cert-card{background:var(--bg-panel); border:1px solid var(--hairline); border-radius:8px; padding:16px;}
   .cert-card .cert-name{color:var(--text); font-size:13.5px; font-weight:600; margin-bottom:4px;}
   .cert-card .cert-org{font-family:var(--mono); font-size:12px; color:var(--text-dim);}
 
-  /* contact */
+  /* CONTACT */
   .contact-grid{display:flex; gap:14px; flex-wrap:wrap;}
   .contact-item{
     font-family:var(--mono); font-size:13.5px;
     background:var(--bg-panel); border:1px solid var(--hairline);
     padding:12px 16px; border-radius:8px; color:var(--text-dim);
-    display:flex; align-items:center; gap:8px;
+    display:flex; align-items:center; gap:8px; word-break:break-all;
   }
   .contact-item b{color:var(--amber-dim); font-weight:600;}
 
@@ -233,13 +218,13 @@
     <div class="term-body" id="termBody">
       <div class="term-line"><span class="prompt">➜</span> <span class="path">~</span> whoami</div>
       <span class="out-name">Thanushree MK</span>
-      <span class="out-role">Electronics &amp; Communications Engineer · Embedded Systems &amp; Full-Stack Developer</span>
-      <span class="out-line">ECE graduate · Software Developer Intern @ Bosch (Java full-stack, embedded systems, IoT)</span>
-      <span class="out-line">Based in Bangalore, Karnataka</span>
+      <span class="out-role">Java Developer · Electronics &amp; Communication Engineer</span>
+      <span class="out-line">ECE graduate (2026) · Java Software Developer Intern @ Bosch</span>
+      <span class="out-line">Based in Bangalore, Karnataka · Open to entry-level Java and software engineering roles</span>
 
       <div class="term-input-row">
         <span class="prompt">➜</span> <span class="path">~</span>
-        <input type="text" id="termInput" placeholder="type a command..." autocomplete="off" spellcheck="false">
+        <input type="text" id="termInput" placeholder="type a command..." autocomplete="off" spellcheck="false" aria-label="Terminal input">
       </div>
       <div class="term-hint">try <b>help</b>, <b>projects</b>, <b>skills</b>, <b>contact</b>, or <b>clear</b></div>
     </div>
@@ -253,30 +238,17 @@
 
     <div class="job">
       <div class="job-row">
-        <span class="job-role">Software Developer Intern — Full Stack</span>
+        <span class="job-role">Java Software Developer (Internship)</span>
         <span class="job-date">Jan 2026 – Jul 2026</span>
       </div>
-      <div class="job-org">Bosch</div>
+      <div class="job-org">Bosch RBAI, Bengaluru</div>
       <ul>
-        <li>Designed and developed the SAP Re-Release Workflow Management System, a multi-stage, role-based approval application automating SAP re-release approvals end-to-end.</li>
-        <li>Built the Slot Allocation Management System for SMT/FA production planning — meeting scheduling, ECR tracking, production line allocation, and execution-status reporting.</li>
-        <li>Enhanced the Electronic Change Request (ECR) platform with new approval screens, report generation, validations, and workflow logic, and resolved production bugs.</li>
-        <li>Developed interactive reporting dashboards (JSP, JavaScript, DataTables) for real-time tracking of approval status and execution timelines.</li>
-        <li>Designed and optimized MySQL schemas, queries, and transaction handling supporting workflow data, CRUD operations, and audit trails.</li>
-        <li>Collaborated with cross-functional engineering teams, participated in code reviews and sprint planning, and applied best practices in software design, MVC architecture, and code quality.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="job-row">
-        <span class="job-role">Engineering Intern</span>
-        <span class="job-date">Oct 2023 – Nov 2023</span>
-      </div>
-      <div class="job-org">SGS Tekniks Manufacturing Pvt Ltd</div>
-      <ul>
-        <li>Engaged in structured knowledge-sharing sessions with senior engineers, deepening understanding of manufacturing industry standards and embedded system applications.</li>
-        <li>Collaborated with cross-functional teams to identify production workflow bottlenecks; contributed to data-driven analysis that supported process improvements.</li>
-        <li>Gained practical exposure to hardware-software integration and quality assurance practices in a production environment.</li>
+        <li>Developed and enhanced enterprise web applications using Java, Servlets, JSP, JavaScript and MySQL, including a workflow management module and slot allocation features.</li>
+        <li>Designed and maintained multi-stage, role-based approval workflows covering request submission, processing and status tracking.</li>
+        <li>Wrote and optimised MySQL queries and CRUD operations, and supported audit trails and reporting requirements.</li>
+        <li>Built custom approval screens, report generation tools and backend validations for the ECR Management module, and fixed live application issues.</li>
+        <li>Investigated and troubleshot application defects, implemented workflow enhancements, and maintained existing modules.</li>
+        <li>Collaborated with cross-functional engineering teams in an Agile/Scrum environment using Git and Bitbucket.</li>
       </ul>
     </div>
   </div>
@@ -286,50 +258,38 @@
   <div class="wrap">
     <div class="eyebrow">03 · build log</div>
     <h2>projects</h2>
-    <p class="projects-lead">Enterprise Java full-stack applications built during my 6-month internship at Bosch.</p>
+    <p class="projects-lead">Enterprise and academic projects I have built or worked on. Bosch projects are internal, so details are summarised here.</p>
     <div class="projects-grid">
 
       <div class="card">
-        <div class="card-top"><h3>SAP Re-Release Workflow Management System</h3><span class="date">Bosch · 6 mo</span></div>
-        <p>Enterprise web app automating multi-stage SAP re-release approvals with role-based access control, dynamic dashboards, and a full audit trail.</p>
+        <div class="card-top"><h3>SAP Re-Release Workflow Management System</h3><span class="date">Bosch · 2026</span></div>
+        <p>Enterprise web application supporting multi-stage, role-based approval processes and request status tracking.</p>
         <ul>
-          <li>Multi-stage, role-based approval workflow with status tracking</li>
-          <li>Email notifications + audit trail for full request lifecycle</li>
-          <li>CRUD operations and dynamic dashboards across the stack</li>
+          <li>Enhanced JSP-based screens, backend validations and database operations</li>
+          <li>Worked on audit trails and reporting functionality</li>
         </ul>
-        <div class="stack"><span class="tag">Java</span><span class="tag">JSP/Servlets</span><span class="tag">JDBC</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
+        <div class="stack"><span class="tag">Java</span><span class="tag">Servlets</span><span class="tag">JSP</span><span class="tag">JDBC</span><span class="tag">MySQL</span></div>
       </div>
 
       <div class="card">
-        <div class="card-top"><h3>Slot Allocation Management System</h3><span class="date">Bosch · 6 mo</span></div>
-        <p>Production scheduling platform for SMT/FA slot allocation, covering meeting scheduling, ECR tracking, and execution-status reporting.</p>
+        <div class="card-top"><h3>ECR Management Enhancements</h3><span class="date">Bosch · 2026</span></div>
+        <p>Upgrades to an existing Engineering Change Request workflow module.</p>
         <ul>
-          <li>Approval workflows and ticket management for SMT/FA execution</li>
-          <li>Production line allocation and responsible-owner assignment</li>
-          <li>Reporting dashboards for allocation and execution status</li>
+          <li>Built custom approval screens and report generation tools</li>
+          <li>Added backend validations and optimised MySQL operations to fix live issues</li>
         </ul>
-        <div class="stack"><span class="tag">Java</span><span class="tag">JSP/Servlets</span><span class="tag">JDBC</span><span class="tag">MySQL</span></div>
+        <div class="stack"><span class="tag">Java</span><span class="tag">JSP</span><span class="tag">JDBC</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
       </div>
 
       <div class="card">
-        <div class="card-top"><h3>ECR Management Enhancements</h3><span class="date">Bosch · 6 mo</span></div>
-        <p>Feature and reliability upgrades to the Electronic Change Request platform, from new approval screens to production bug fixes.</p>
+        <div class="card-top"><h3>TrustVote – E-Voting Platform</h3><span class="date">Academic · K S Institute of Technology</span></div>
+        <p>Secure e-voting system with multi-factor voter authentication.</p>
         <ul>
-          <li>New approval screens, validations, and report generation</li>
-          <li>Fixed production issues and optimized database operations</li>
-          <li>UI improvements to streamline the change-request process</li>
+          <li>Combined fingerprint verification, RFID card authentication and face recognition</li>
+          <li>Built database logic to prevent duplicate voting and maintain voting records</li>
+          <li>Integrated RFID and biometric hardware with the software components</li>
         </ul>
-        <div class="stack"><span class="tag">Java</span><span class="tag">JSP</span><span class="tag">JDBC</span><span class="tag">MySQL</span></div>
-      </div>
-
-      <div class="card">
-        <div class="card-top"><h3>Report &amp; Dashboard Development</h3><span class="date">Bosch · 6 mo</span></div>
-        <p>Interactive reporting layer used across the workflow apps to track progress, ownership, and execution timelines in real time.</p>
-        <ul>
-          <li>DataTables-driven reports with filtering and drill-down</li>
-          <li>Live approval status, responsible users, and ticket info</li>
-        </ul>
-        <div class="stack"><span class="tag">JSP</span><span class="tag">JavaScript</span><span class="tag">DataTables</span><span class="tag">JDBC</span></div>
+        <div class="stack"><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">OpenCV</span><span class="tag">RFID</span></div>
       </div>
 
     </div>
@@ -341,13 +301,12 @@
     <div class="eyebrow">04 · toolbox</div>
     <h2>skills</h2>
     <div class="skills-grid">
-      <div class="skill-cat"><div class="label">Programming Languages</div><div class="val">Java · Python · C++ · JavaScript · SQL · Verilog</div></div>
-      <div class="skill-cat"><div class="label">Full-Stack Web Dev</div><div class="val">JSP · Servlets · JDBC · MVC · HTML5 · CSS · Bootstrap · jQuery · DataTables</div></div>
-      <div class="skill-cat"><div class="label">Databases</div><div class="val">MySQL · Schema Design · Query Optimization · Transaction Handling</div></div>
-      <div class="skill-cat"><div class="label">Frameworks &amp; Practices</div><div class="val">Workflow Automation · Role-Based Access Control (RBAC) · CRUD Applications · Enterprise Web Apps</div></div>
-      <div class="skill-cat"><div class="label">Embedded Systems &amp; IoT</div><div class="val">Arduino · ESP32 · ARM Cortex · 8051 MCU · Embedded C</div></div>
-      <div class="skill-cat"><div class="label">VLSI &amp; Hardware Design</div><div class="val">Verilog · Digital Logic Design</div></div>
-      <div class="skill-cat"><div class="label">Tools &amp; Platforms</div><div class="val">Eclipse · VS Code · Arduino IDE · Git · AutoCAD</div></div>
+      <div class="skill-cat"><div class="label">Languages</div><div class="val">Java · SQL · JavaScript · Python</div></div>
+      <div class="skill-cat"><div class="label">Java &amp; Backend</div><div class="val">Servlets · JSP · JDBC · MVC architecture · OOP</div></div>
+      <div class="skill-cat"><div class="label">Web</div><div class="val">HTML · CSS · Bootstrap · jQuery · React</div></div>
+      <div class="skill-cat"><div class="label">Databases</div><div class="val">MySQL · SQL queries · CRUD operations</div></div>
+      <div class="skill-cat"><div class="label">Tools</div><div class="val">Eclipse IDE · Apache Tomcat · Git · Bitbucket · VS Code</div></div>
+      <div class="skill-cat"><div class="label">Practices</div><div class="val">Debugging · Troubleshooting · Application maintenance · Agile/Scrum</div></div>
     </div>
   </div>
 </section>
@@ -358,11 +317,11 @@
     <h2>education</h2>
     <div class="edu-box">
       <div class="job-row">
-        <span class="job-role">B.E. — Electronics &amp; Communication</span>
-        <span class="job-date">May 2022 – Jun 2026</span>
+        <span class="job-role">B.E. — Electronics &amp; Communication Engineering</span>
+        <span class="job-date">Mar 2022 – Oct 2026</span>
       </div>
-      <div class="job-org" style="margin-bottom:10px;">K S Institute of Technology, Bangalore <span style="color:var(--text-dim); font-size:12.5px;">(currently pursuing final year)</span></div>
-      <p style="color:var(--text-dim); font-size:13.5px;">Coursework: Embedded Systems, Digital Signal Processing, VLSI Design, Microcontrollers &amp; Applications, Computer Networks, Data Structures.</p>
+      <div class="job-org" style="margin-bottom:6px;">K S Institute of Technology, Bangalore</div>
+      <p style="color:var(--text-dim); font-size:13.5px;">CGPA: 8.0 / 10.0</p>
     </div>
   </div>
 </section>
@@ -370,19 +329,11 @@
 <section id="certifications">
   <div class="wrap">
     <div class="eyebrow">06 · credentials</div>
-    <h2>certifications &amp; training</h2>
+    <h2>certifications</h2>
     <div class="cert-grid">
       <div class="cert-card">
-        <div class="cert-name">Technology Apprenticeship Program</div>
-        <div class="cert-org">Accenture UK via Forage</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-name">GenAI-Powered Data Analytics</div>
+        <div class="cert-name">GenAI Data Analytics</div>
         <div class="cert-org">Tata Consultancy Services via Forage</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-name">C++ Programming</div>
-        <div class="cert-org">Infosys Springboard</div>
       </div>
     </div>
   </div>
@@ -413,14 +364,10 @@
   const body = document.getElementById('termBody');
   const inputRow = input.parentElement;
 
-  const commands = {
-    help: "available: help, about, projects, skills, contact, education, certifications, clear",
-    about: "→ scrolling to nothing yet — check experience section below.",
-    projects: "→ jumping to #projects",
-    skills: "→ jumping to #skills",
-    contact: "→ jumping to #contact",
-    education: "→ jumping to #education",
-    certifications: "→ jumping to #certifications",
+  const sections = ['projects','skills','contact','education','certifications','experience'];
+  const responses = {
+    help: "available: help, about, experience, projects, skills, education, certifications, contact, clear",
+    about: "ECE graduate and Java developer. Interned at Bosch building enterprise web applications.",
   };
 
   function printLine(text, cls){
@@ -431,33 +378,28 @@
   }
 
   input.addEventListener('keydown', function(e){
-    if(e.key === 'Enter'){
-      const raw = input.value.trim();
-      const cmd = raw.toLowerCase();
-      printLine('➜ ~ ' + raw);
-      input.value = '';
+    if(e.key !== 'Enter') return;
+    const raw = input.value.trim();
+    const cmd = raw.toLowerCase();
+    input.value = '';
+    if(cmd === '') return;
+    printLine('➜ ~ ' + raw);
 
-      if(cmd === 'clear'){
-        document.querySelectorAll('#termBody .term-line').forEach(el => el.remove());
-        return;
-      }
-      if(['projects','skills','contact','education','certifications'].includes(cmd)){
-        printLine(commands[cmd], 'out-line');
-        const target = document.getElementById(cmd);
-        if(target) setTimeout(() => target.scrollIntoView({behavior:'smooth', block:'start'}), 150);
-        return;
-      }
-      if(cmd === 'help'){
-        printLine(commands.help, 'out-line');
-        return;
-      }
-      if(cmd === 'about'){
-        printLine("ECE graduate, full-stack + embedded background. See sections below.", 'out-line');
-        return;
-      }
-      if(cmd === ''){ return; }
-      printLine(`command not found: ${raw} — try "help"`, 'out-line');
+    if(cmd === 'clear'){
+      document.querySelectorAll('#termBody .term-line, #termBody .out-line').forEach(el => el.remove());
+      return;
     }
+    if(sections.includes(cmd)){
+      printLine('→ jumping to #' + cmd, 'out-line');
+      const target = document.getElementById(cmd);
+      if(target) setTimeout(() => target.scrollIntoView({behavior:'smooth', block:'start'}), 150);
+      return;
+    }
+    if(responses[cmd]){
+      printLine(responses[cmd], 'out-line');
+      return;
+    }
+    printLine(`command not found: ${raw} — try "help"`, 'out-line');
   });
 </script>
 
